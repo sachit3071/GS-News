@@ -64,5 +64,10 @@ function checkCountry(cty)
     cty.checked = true
     console.log(cty.id)
     country = cty.id
+    if(category == null)
+    {   
+        category = "general"
+        document.getElementById("general").checked = true
+    }
     show()
 }
