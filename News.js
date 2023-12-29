@@ -1,14 +1,18 @@
+let country = "in"
+let category = null
+
+document.getElementById("in").checked = true
 let acc = document.getElementById('acc-header');
-let key = "1778275ed5df408ca819502d185125d8";
-let sources = "";
-let country = "us";
-let keyword = "Tesla";
-show();
+
 function show() {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `https://newsapi.org/v2/everything?q=${keyword}&sortBy=popularity&apiKey=${key}`, true);
-    xhr.onprogress = function()
-    {
+    console.log(category + " "+country)
+    if(category == null)
+    {   xhr.open('GET', `https://saurav.tech/NewsAPI/everything/cnn.json`, true);   }
+    else
+    {   xhr.open('GET', `https://saurav.tech/NewsAPI/top-headlines/category/${category}/${country}.json`, true);   }
+    
+    xhr.onprogress = function () {
         let spin = document.getElementById('spin');
         spin.innerHTML = `<div class="spinner-border text-primary center" role="status">
                     <span class="visually-hidden">Loading...</span>
@@ -18,24 +22,15 @@ function show() {
         if (this.status === 200) {
             let json = JSON.parse(this.responseText);
             let articles = json.articles;
-            console.log(articles);
+            // console.log(articles);
             let str = "";
             let newshtml = "";
             articles.forEach(function (element) {
                 let dt = new Date(element["publishedAt"]);
-                str = `<div class="accs" >
-                            <div class="header">
-                                <div class="img-container">
-                                    <img src=${element.urlToImage} >
-                                    <div id="headline">
-                                        <p class="description">${element["title"]}</p>
-                                        <p class="description_dt">${dt.toLocaleDateString('en-UK')} - ${element.source.name}</p>
-                                    </div>
-                                    </img>
-                                </div>
-                            </div>
-                            <p class="content">${element["content"]}</p>
-                            <br><p class="fst-italic sm text-start mx-2">Author: ${element["author"]}</p>
+                str = `<div class="card inline-block m-2" style="width: 16rem;">
+                            <img src="${element.urlToImage}" class="object-fit-cover border rounded">
+                                ${element.title}
+                            </img>
                         </div>`;
                 newshtml = newshtml + str;
             });
@@ -46,10 +41,28 @@ function show() {
     }
     xhr.send();
 }
-let srch = document.getElementById('srch');
-srch.addEventListener('input', function () {
-    keyword = srch.value.toLowerCase();
-    show();
-    let srchResult = document.getElementById('srch-result');
-    srchResult.innerText = `Showing results for "${keyword}"`;
-});
+
+show(null, null)
+
+// Get all radio buttons for category
+const categoryRadioButtons = document.querySelectorAll('input[name="category"]');
+function checkCategory(ct)
+{
+    console.log(categoryRadioButtons)
+    categoryRadioButtons.forEach((rb) => {  rb.checked = false; })
+    ct.checked = true
+    category = ct.id
+    show()
+}
+
+// Get all radio buttons for country
+const countryRadioButtons = document.querySelectorAll('input[name="country"]');
+console.log(countryRadioButtons)
+function checkCountry(cty)
+{
+    countryRadioButtons.forEach((rb) => {   rb.checked = false; })
+    cty.checked = true
+    console.log(cty.id)
+    country = cty.id
+    show()
+}

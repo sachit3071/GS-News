@@ -7,16 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link rel="stylesheet" href="News.css">
-    <title>Welcome to GS News</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>GS News</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">GS News</a>
+            <a class="navbar-brand" href="">GS News</a>
                 <form class="d-flex">
                     <input class="form-control me-2" id="srch" type="search" placeholder="Search" aria-label="Search">
                 </form>
@@ -26,9 +24,56 @@
     <div class="container">
         <h3 class="my-2 mx-3">Trending Headlines <span class="badge bg-dark">by GS News</span></h3>
         <hr>
+        <div class="container d-flex">
+        <div class="btn-group" role="group" aria-label="radio toggle button group">
+            <input type="radio" class="btn-check" name="category" id="business" autocomplete="off" onclick="checkCategory(this)">
+            <label class="btn btn-outline-primary" for="business">business</label>
+
+            <input type="radio" class="btn-check" name="category" id="entertainment" autocomplete="off" onclick="checkCategory(this)">
+            <label class="btn btn-outline-primary" for="entertainment">entertainment</label>
+          
+            <input type="radio" class="btn-check" name="category" id="general" autocomplete="off" onclick="checkCategory(this)">
+            <label class="btn btn-outline-primary" for="general">general</label>
+
+            <input type="radio" class="btn-check" name="category" id="health" autocomplete="off" onclick="checkCategory(this)">
+            <label class="btn btn-outline-primary" for="health">health</label>
+          
+            <input type="radio" class="btn-check" name="category" id="science" autocomplete="off" onclick="checkCategory(this)">
+            <label class="btn btn-outline-primary" for="science">science</label>
+
+            <input type="radio" class="btn-check" name="category" id="sports" autocomplete="off" onclick="checkCategory(this)">
+            <label class="btn btn-outline-primary" for="sports">sports</label>
+
+            <input type="radio" class="btn-check" name="category" id="technology" autocomplete="off" onclick="checkCategory(this)">
+            <label class="btn btn-outline-primary" for="technology">technology</label>
+        </div>
+
+        <div class="btn-group px-5" role="group" aria-label="radio toggle button group">
+            <input type="radio" class="btn-check" name="country" id="in" autocomplete="off" onclick="checkCountry(this)">
+            <label class="btn btn-outline-danger" for="in">india</label>
+
+            <input type="radio" class="btn-check" name="country" id="au" autocomplete="off" onclick="checkCountry(this)">
+            <label class="btn btn-outline-danger" for="au">australia</label>
+          
+            <input type="radio" class="btn-check" name="country" id="us" autocomplete="off" onclick="checkCountry(this)">
+            <label class="btn btn-outline-danger" for="us">united states</label>
+
+            <input type="radio" class="btn-check" name="country" id="ru" autocomplete="off" onclick="checkCountry(this)">
+            <label class="btn btn-outline-danger" for="ru">russia</label>
+          
+            <input type="radio" class="btn-check" name="country" id="fr" autocomplete="off" onclick="checkCountry(this)">
+            <label class="btn btn-outline-danger" for="fr">france</label>
+
+            <input type="radio" class="btn-check" name="country" id="gb" autocomplete="off" onclick="checkCountry(this)">
+            <label class="btn btn-outline-danger" for="gb">united kingdom</label>
+        </div>
+
+        </div>
+    </div>
+    <div class="container">
         <div id="spin"></div>
         <h4 id="srch-result"></h4>
-        <div class="my-2" id="acc-header">
+        <div class="my-2 d-flex flex-wrap" id="acc-header">
         </div>
     </div>
     <script src="News.js"></script>
