@@ -2,7 +2,7 @@ let country = "in"
 let category = null
 
 document.getElementById("in").checked = true
-let acc = document.getElementById('acc-header');
+let feed = document.getElementById('feed');
 
 function show() {
     const xhr = new XMLHttpRequest();
@@ -27,14 +27,14 @@ function show() {
             let newshtml = "";
             articles.forEach(function (element) {
                 let dt = new Date(element["publishedAt"]);
-                str = `<div class="card inline-block m-2" style="width: 16rem;">
+                str = `<div class="card inline-block mx-auto my-2" style="width: 16rem;">
                             <img src="${element.urlToImage}" class="object-fit-cover border rounded">
                                 ${element.title}
                             </img>
                         </div>`;
                 newshtml = newshtml + str;
             });
-            acc.innerHTML = newshtml;
+            feed.innerHTML = newshtml;
             let spin = document.getElementById('spin');
             spin.innerHTML = "";
         }
