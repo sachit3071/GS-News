@@ -5,85 +5,53 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
     <title>GS News</title>
 </head>
 
 <body>
-    <nav class="navbar-lg sticky-top bg-body-tertiary navbar bg-light border-body">
-        <div class="container-fluid d-flex">
-            <h3 class="container my-2 mx-3">Trending Headlines <span class="badge bg-dark">by GS News</span></h3>
-        </div>
+    <nav class="navbar sticky-top navbar-expand-lg bg-body-success">
         <div class="container-fluid">
-            <div class="d-flex sticky-top">
-                <div class="btn-group mx-2" role="group" aria-label="radio toggle button group">
-                    <input type="radio" class="btn-check" name="category" id="business" autocomplete="off"
-                        onclick="checkCategory(this)">
-                    <label class="btn btn-outline-primary" for="business">business</label>
-
-                    <input type="radio" class="btn-check" name="category" id="entertainment" autocomplete="off"
-                        onclick="checkCategory(this)">
-                    <label class="btn btn-outline-primary" for="entertainment">entertainment</label>
-
-                    <input type="radio" class="btn-check" name="category" id="general" autocomplete="off"
-                        onclick="checkCategory(this)">
-                    <label class="btn btn-outline-primary" for="general">general</label>
-
-                    <input type="radio" class="btn-check" name="category" id="health" autocomplete="off"
-                        onclick="checkCategory(this)">
-                    <label class="btn btn-outline-primary" for="health">health</label>
-
-                    <input type="radio" class="btn-check" name="category" id="science" autocomplete="off"
-                        onclick="checkCategory(this)">
-                    <label class="btn btn-outline-primary" for="science">science</label>
-
-                    <input type="radio" class="btn-check" name="category" id="sports" autocomplete="off"
-                        onclick="checkCategory(this)">
-                    <label class="btn btn-outline-primary" for="sports">sports</label>
-
-                    <input type="radio" class="btn-check" name="category" id="technology" autocomplete="off"
-                        onclick="checkCategory(this)">
-                    <label class="btn btn-outline-primary" for="technology">technology</label>
-                </div>
-
-                <div class="btn-group mx-2" role="group" aria-label="radio toggle button group">
-                    <input type="radio" class="btn-check" name="country" id="in" autocomplete="off"
-                        onclick="checkCountry(this)">
-                    <label class="btn btn-outline-danger" for="in">india</label>
-
-                    <input type="radio" class="btn-check" name="country" id="au" autocomplete="off"
-                        onclick="checkCountry(this)">
-                    <label class="btn btn-outline-danger" for="au">australia</label>
-
-                    <input type="radio" class="btn-check" name="country" id="us" autocomplete="off"
-                        onclick="checkCountry(this)">
-                    <label class="btn btn-outline-danger" for="us">united states</label>
-
-                    <input type="radio" class="btn-check" name="country" id="ru" autocomplete="off"
-                        onclick="checkCountry(this)">
-                    <label class="btn btn-outline-danger" for="ru">russia</label>
-
-                    <input type="radio" class="btn-check" name="country" id="fr" autocomplete="off"
-                        onclick="checkCountry(this)">
-                    <label class="btn btn-outline-danger" for="fr">france</label>
-
-                    <input type="radio" class="btn-check" name="country" id="gb" autocomplete="off"
-                        onclick="checkCountry(this)">
-                    <label class="btn btn-outline-danger" for="gb">united kingdom</label>
-                </div>
-
-            </div>
-    </nav>
-
-    </div>
-    <div class="d-flex justify-content-center">
-        <div id="spin"></div>
-        <div class="d-flex flex-wrap" id="feed">
+            <h3 class="container-fluid my-2 mx-3"><span class="badge bg-secondary">Trending Headlines by GS News</span></h3>
+            <a class="navbar-brand" id="weather"></a>
+            <button class="btn-secondary" id="mode" onclick="toggleMode()"></button>
         </div>
+      </nav>
+    
+    <div class="container">
+        
+        <div class="row m-3 " style="height: 70vh;">
+            <div class="col-4 h-100">
+                <div class="card p-3 bg-dark h-100">
+                    <ul class="list-group overflow-y-scroll list-group-flush" id="stock-market"> </ul>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="card p-3" >
+                <div id="carouselExampleCaptions" class="carousel carousel-dark d-inline-block slide" >
+                    <div class="carousel-inner d-inline-block" id="headlines"></div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev" >
+                        <span class="carousel-control-prev-icon" aria-hidden="true" ></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next" >
+                        <span class="carousel-control-next-icon" aria-hidden="true" ></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                </div>
+          </div>
+        </div>
+        
+        <div class="row m-3" id="stories"> </div>
+      </div>
     </div>
-    <script src="News.js"></script>
+
+    
 </body>
+
+<script src="index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>
